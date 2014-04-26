@@ -66,14 +66,17 @@ void loop() {
   }
 
   if(digitalRead(p1) == LOW) {
-    Keyboard.press(KEY_5);
-    Keyboard.print(KEY_1);
+    Keyboard.press(KEY_1);
+  }
+  if(digitalRead(p1) == HIGH) {
+    Keyboard.release(KEY_1);
   }
 
   if(digitalRead(p2) == LOW) {
-    Keyboard.press(KEY_5);
-    Keyboard.press(KEY_5);
     Keyboard.press(KEY_2);
+  }
+  if(digitalRead(p2) == HIGH) {
+    Keyboard.release(KEY_2);
   }
 
   if(digitalRead(a) == LOW) {
@@ -118,12 +121,12 @@ void loop() {
     Keyboard.release(KEY_RIGHT);
   }
 
-//  if(digitalRead(coin) == LOW) {
-//    Keyboard.press(KEY_5);
-//  }
-//  if(digitalRead(coin) == HIGH) {
-//    Keyboard.release(KEY_5);
-//  }
+  if(digitalRead(coin) == LOW) {
+    Keyboard.press(KEY_5);
+  }
+  if(digitalRead(coin) == HIGH) {
+    Keyboard.release(KEY_5);
+  }
 
   if(digitalRead(tab) == LOW) {
     Keyboard.press(KEY_TAB);
