@@ -1,23 +1,27 @@
 
 //Code by Ben Goldberg, Logan Greif, and Tim Hollabaugh
 //The arcade machine is staying at logan’s house after the fair!
-int enter = 3;
-int escape = 4;
-int p1 = 5;
-int p2 = 7;
-int a = 8;
-int s = 9;
-int up = 10;
-int down = 11;
-int left = 12;
-int right = 13;
-int coin = 17;
-int tab = 20;
-int q = 21;
-int w = 22;
-int e = 23;
+
+//declare the pin numbers in use as constances
+const int enter = 3;
+const int escape = 4;
+const int p1 = 5;
+const int p2 = 7;
+const int a = 8;
+const int s = 9;
+const int up = 10;
+const int down = 11;
+const int left = 12;
+const int right = 13;
+const int coin = 17;
+const int tab = 20;
+const int q = 21;
+const int w = 22;
+const int e = 23;
 
 void setup() {
+  
+  //set the sensor pins o input mode
   pinMode(enter, INPUT);
   pinMode(p1, INPUT);
   pinMode(p2, INPUT);
@@ -33,6 +37,8 @@ void setup() {
   pinMode(w, INPUT);
   pinMode(e, INPUT);
   pinMode(escape, INPUT);
+  
+  //turn on the pullup resistor on the input pins
   digitalWrite(enter, HIGH);
   digitalWrite(p1, HIGH);
   digitalWrite(p2, HIGH);
@@ -51,6 +57,7 @@ void setup() {
 }
 
 void loop() {
+  //look for adrcade contol input and output appropreate key press to Raspberry Pi
   if(digitalRead(enter) == LOW) {
     Keyboard.press(KEY_ENTER);
   }
@@ -68,7 +75,7 @@ void loop() {
   if(digitalRead(p2) == LOW) {
     Keyboard.press(KEY_2);
   }
-  if(digitalRead(p2) == HIGH {
+  if(digitalRead(p2) == HIGH) {
     Keyboard.release(KEY_2);
   }
 
