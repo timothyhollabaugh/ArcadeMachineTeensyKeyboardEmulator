@@ -4,7 +4,6 @@
 
 //declare the pin numbers in use as constances
 const int enter = 3;
-const int escape = 4;
 const int p1 = 5;
 const int p2 = 7;
 const int a = 8;
@@ -18,10 +17,11 @@ const int tab = 20;
 const int q = 21;
 const int w = 22;
 const int e = 23;
+const int escape = 4;
 
 void setup() {
   
-  //set the sensor pins o input mode
+  //set the sensor pins to input mode
   pinMode(enter, INPUT);
   pinMode(p1, INPUT);
   pinMode(p2, INPUT);
@@ -66,17 +66,14 @@ void loop() {
   }
 
   if(digitalRead(p1) == LOW) {
-    Keyboard.press(KEY_1);
-  }
-  if(digitalRead(p1) == HIGH) {
-    Keyboard.release(KEY_1);
+    Keyboard.press(KEY_5);
+    Keyboard.print(KEY_1);
   }
 
   if(digitalRead(p2) == LOW) {
+    Keyboard.press(KEY_5);
+    Keyboard.press(KEY_5);
     Keyboard.press(KEY_2);
-  }
-  if(digitalRead(p2) == HIGH) {
-    Keyboard.release(KEY_2);
   }
 
   if(digitalRead(a) == LOW) {
@@ -121,12 +118,12 @@ void loop() {
     Keyboard.release(KEY_RIGHT);
   }
 
-  if(digitalRead(coin) == LOW) {
-    Keyboard.press(KEY_5);
-  }
-  if(digitalRead(coin) == HIGH) {
-    Keyboard.release(KEY_5);
-  }
+//  if(digitalRead(coin) == LOW) {
+//    Keyboard.press(KEY_5);
+//  }
+//  if(digitalRead(coin) == HIGH) {
+//    Keyboard.release(KEY_5);
+//  }
 
   if(digitalRead(tab) == LOW) {
     Keyboard.press(KEY_TAB);
