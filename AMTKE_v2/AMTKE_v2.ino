@@ -1,4 +1,3 @@
-
 //Code by Ben Goldberg, Logan Greif, and Tim Hollabaugh
 //The arcade machine is staying at logan’s house after the fair!
 
@@ -19,6 +18,8 @@
 //#define W 22
 //#define E 23
 //#define ESCAPE 4
+
+#define BLINK_TIME 1000
  /*
 const int right = 13;
 const int s = 9;
@@ -26,6 +27,8 @@ const int left = 12;
 const int w = 22;
 */
 
+int oldTime = 0;
+int ledState = HIGH;
 void setup() {
 //set the sensor pins to input mode
 //  pinMode(ENTER, INPUT);
@@ -61,11 +64,24 @@ void setup() {
 //  digitalWrite(W, HIGH);
 //  digitalWrite(E, HIGH);
 //  digitalWrite(ESCAPE, HIGH);
-  digitalWrite(LED, HIGH);
+//  digitalWrite(LED, HIGH);
 
+  oldTime  = millis();  
 }
 
 void loop() {
+  //Blink led every BLINK_TIME milliseconds
+  int now = millis();
+  if(now  - oldTime >= BLINK_TIME) {
+    if(ledState == HIGH){
+      ledState = LOW;
+    }else if(ledState == LOW) {
+      ledState = HIGH;
+    }
+    oldTime = now;
+  }
+  digitalWrite(LED, ledState);
+  
   //look for adrcade contol input and output appropreate key press to Raspberry Pi
 /*
   if(digitalRead(ENTER) == LOW) {
