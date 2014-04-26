@@ -3,7 +3,7 @@
 //The arcade machine is staying at logan’s house after the fair!
 
 //declare the pin numbers in use as constances
-#define ENTER 3
+//#define ENTER 3
 #define P1 5
 #define P2 7
 #define A 8
@@ -12,6 +12,7 @@
 #define DOWN 11
 #define LEFT 12
 #define RIGHT 13
+#define LED 6
 //#define COIN 17
 //#define TAB 20
 //#define Q 21
@@ -27,7 +28,7 @@ const int w = 22;
 
 void setup() {
 //set the sensor pins to input mode
-  pinMode(ENTER, INPUT);
+//  pinMode(ENTER, INPUT);
   pinMode(P1, INPUT);
   pinMode(P2, INPUT);
   pinMode(A, INPUT);
@@ -36,6 +37,7 @@ void setup() {
   pinMode(DOWN, INPUT);
   pinMode(LEFT, INPUT);
   pinMode(RIGHT, INPUT);
+  pinMode(LED, OUTPUT);
 //  pinMode(COIN, INPUT);
 //  pinMode(TAB, INPUT);
 //  pinMode(Q, INPUT);
@@ -63,6 +65,7 @@ void setup() {
 }
 
 void loop() {
+   digitalWrite(LED, HIGH);
   //look for adrcade contol input and output appropreate key press to Raspberry Pi
 /*
   if(digitalRead(ENTER) == LOW) {
@@ -177,4 +180,5 @@ void loop() {
     Keyboard.release(KEY_ESC);
   }
 */
+   digitalWrite(LED, LOW);
 }
