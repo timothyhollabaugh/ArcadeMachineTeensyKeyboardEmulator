@@ -18,14 +18,7 @@
 //#define W 22
 //#define E 23
 //#define ESCAPE 4
-
 #define BLINK_TIME 1000
- /*
-const int right = 13;
-const int s = 9;
-const int left = 12;
-const int w = 22;
-*/
 
 int oldTime = 0;
 int ledState = HIGH;
@@ -64,7 +57,6 @@ void setup() {
 //  digitalWrite(W, HIGH);
 //  digitalWrite(E, HIGH);
 //  digitalWrite(ESCAPE, HIGH);
-//  digitalWrite(LED, HIGH);
 
   oldTime  = millis();  
 }
