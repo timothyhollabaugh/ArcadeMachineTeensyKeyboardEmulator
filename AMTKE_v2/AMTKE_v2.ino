@@ -65,7 +65,6 @@ void setup() {
 }
 
 void loop() {
-   digitalWrite(LED, HIGH);
   //look for adrcade contol input and output appropreate key press to Raspberry Pi
 /*
   if(digitalRead(ENTER) == LOW) {
@@ -76,17 +75,17 @@ void loop() {
   }
 */
   if(digitalRead(P1) == LOW) {
-    Keyboard.press(KEY_5);
+    Keyboard.print('5');
     delay(100);
-    Keyboard.print(KEY_1);
+    Keyboard.print('1');
   }
 
   if(digitalRead(P2) == LOW) {
-    Keyboard.press(KEY_5);
+    Keyboard.print('5');
     delay(100);
-    Keyboard.press(KEY_5);
+    Keyboard.print('5');
     delay(100);
-    Keyboard.press(KEY_2);
+    Keyboard.print('2');
   }
 
   if(digitalRead(A) == LOW) {
@@ -180,5 +179,4 @@ void loop() {
     Keyboard.release(KEY_ESC);
   }
 */
-   digitalWrite(LED, LOW);
 }
