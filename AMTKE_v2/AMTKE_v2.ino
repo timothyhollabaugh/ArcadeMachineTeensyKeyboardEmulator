@@ -37,13 +37,13 @@ void setup() {
   pinMode(DOWN, INPUT);
   pinMode(LEFT, INPUT);
   pinMode(RIGHT, INPUT);
-  pinMode(LED, OUTPUT);
 //  pinMode(COIN, INPUT);
 //  pinMode(TAB, INPUT);
 //  pinMode(Q, INPUT);
 //  pinMode(W, INPUT);
 //  pinMode(E, INPUT);
 //  pinMode(ESCAPE, INPUT);
+  pinMode(LED, OUTPUT);
   
   //turn on the pullup resistor on the input pins
 //  digitalWrite(enter, HIGH);
@@ -61,6 +61,7 @@ void setup() {
 //  digitalWrite(W, HIGH);
 //  digitalWrite(E, HIGH);
 //  digitalWrite(ESCAPE, HIGH);
+  digitalWrite(LED, HIGH);
 
 }
 
