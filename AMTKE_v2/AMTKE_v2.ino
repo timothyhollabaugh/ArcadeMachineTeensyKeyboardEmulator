@@ -1,5 +1,5 @@
 //Code by Ben Goldberg, Logan Greif, and Tim Hollabaugh
-//The arcade machine is staying at logan’s house after the fair!
+//The arcade machine is staying at logan's house after the fair!
 
 //declare the pin numbers in use as constances
 //#define ENTER 3
@@ -18,7 +18,14 @@
 //#define W 22
 //#define E 23
 //#define ESCAPE 4
+
 #define BLINK_TIME 1000
+ /*
+const int right = 13;
+const int s = 9;
+const int left = 12;
+const int w = 22;
+*/
 
 int oldTime = 0;
 int ledState = HIGH;
@@ -57,6 +64,7 @@ void setup() {
 //  digitalWrite(W, HIGH);
 //  digitalWrite(E, HIGH);
 //  digitalWrite(ESCAPE, HIGH);
+//  digitalWrite(LED, HIGH);
 
   oldTime  = millis();  
 }
@@ -189,3 +197,4 @@ void loop() {
   }
 */
 }
+
