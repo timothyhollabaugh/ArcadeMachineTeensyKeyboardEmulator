@@ -1,37 +1,44 @@
 //Code by Ben Goldberg, Logan Greif, and Tim Hollabaugh
-//The arcade machine is staying at logan's house after the fair!
-
+//The arcade machine is staying at Logan's house after the fair!
+#include <Bounce.h>
 //declare the pin numbers in use as constances
-//#define ENTER 3
+#define ENTER 3
+#define ESCAPE 4
 #define P1 5
 #define P2 7
-#define A 8
-#define S 9
-#define UP 10
-#define DOWN 11
-#define LEFT 12
-#define RIGHT 13
+#define A 21
+#define S 22
+#define D 23
+#define UP 13
+#define DOWN 14
+#define LEFT 15
+#define RIGHT 16
 #define LED 6
-//#define COIN 17
-//#define TAB 20
-//#define Q 21
-//#define W 22
-//#define E 23
-//#define ESCAPE 4
+#define PAUSE 17 // Add code for
+#define TAB 1
 
 #define BLINK_TIME 1000
- /*
-const int right = 13;
-const int s = 9;
-const int left = 12;
-const int w = 22;
-*/
+
+Bounce enter = Bounce(ENTER, 10);
+//Bounce esc = Bounce(ESCAPE, 10);
+//Bounce p1 = Bounce(P1, 10);
+//Bounce p2 = Bounce(P2, 10);
+//Bounce a = Bounce(A, 10);
+//Bounce s = Bounce(S, 10);
+//Bounce d = Bounce(D, 10);
+//Bounce up = Bounce(UP, 10);
+//Bounce down = Bounce(DOWN, 10);
+//Bounce left = Bounce(LEFT, 10);
+//Bounce right = Bounce(RIGHT, 10);
+//Bounce pause = Bounce(PAUSE, 10);
+//Bounce tab = Bounce(TAB, 10);
 
 int oldTime = 0;
 int ledState = HIGH;
 void setup() {
 //set the sensor pins to input mode
-//  pinMode(ENTER, INPUT);
+  pinMode(ENTER, INPUT);
+  pinMode(ESCAPE, INPUT);
   pinMode(P1, INPUT);
   pinMode(P2, INPUT);
   pinMode(A, INPUT);
@@ -40,16 +47,13 @@ void setup() {
   pinMode(DOWN, INPUT);
   pinMode(LEFT, INPUT);
   pinMode(RIGHT, INPUT);
-//  pinMode(COIN, INPUT);
-//  pinMode(TAB, INPUT);
-//  pinMode(Q, INPUT);
-//  pinMode(W, INPUT);
-//  pinMode(E, INPUT);
-//  pinMode(ESCAPE, INPUT);
+  pinMode(D, INPUT);
+  pinMode(TAB, INPUT);
   pinMode(LED, OUTPUT);
+  pinMode(PAUSE, INPUT);
   
   //turn on the pullup resistor on the input pins
-//  digitalWrite(enter, HIGH);
+  digitalWrite(ENTER, HIGH);
   digitalWrite(P1, HIGH);
   digitalWrite(P2, HIGH);
   digitalWrite(A, HIGH);
@@ -58,13 +62,11 @@ void setup() {
   digitalWrite(DOWN, HIGH);
   digitalWrite(LEFT, HIGH);
   digitalWrite(RIGHT, HIGH);
-//  digitalWrite(COIN, HIGH);
-//  digitalWrite(TAB, HIGH);
-//  digitalWrite(Q, HIGH);
-//  digitalWrite(W, HIGH);
-//  digitalWrite(E, HIGH);
-//  digitalWrite(ESCAPE, HIGH);
-//  digitalWrite(LED, HIGH);
+  digitalWrite(D, HIGH);
+  digitalWrite(TAB, HIGH);
+  digitalWrite(ESCAPE, HIGH);
+  digitalWrite(LED, HIGH);;
+  digitalWrite(PAUSE, HIGH);
 
   oldTime  = millis();  
 }
@@ -82,17 +84,18 @@ void loop() {
   }
   digitalWrite(LED, ledState);
   
-  //look for adrcade contol input and output appropreate key press to Raspberry Pi
-/*
-  if(digitalRead(ENTER) == LOW) {
+  //look for arcade control input and output appropriate key press to Raspberry Pi
+  
+  enter.update();
+  if(enter.fallingEdge()) {
     Keyboard.press(KEY_ENTER);
   }
-  if(digitalRead(ENTER) == HIGH) {
+  if(enter.risingEdge()) {
     Keyboard.release(KEY_ENTER);
   }
-*/
-  if(digitalRead(P1) == LOW) {
-    Keyboard.print('5');
+
+
+  if(digitalRead(P1) == LOW) {    Keyboard.print('5');
     delay(100);
     Keyboard.print('1');
   }
@@ -112,14 +115,12 @@ void loop() {
     Keyboard.release(KEY_A);
   }
 
-
   if(digitalRead(S) == LOW) {
     Keyboard.press(KEY_S);
   }
   if(digitalRead(S) == HIGH) {
     Keyboard.release(KEY_S);
   }
-
 
   if(digitalRead(UP) == LOW) {
     Keyboard.press(KEY_UP);
@@ -148,52 +149,32 @@ void loop() {
   if(digitalRead(RIGHT) == HIGH) {
     Keyboard.release(KEY_RIGHT);
   }
-/*
-  if(digitalRead(COIN) == LOW) {
-    Keyboard.press(KEY_5);
+
+  if(digitalRead(D) == LOW) {
+    Keyboard.press(KEY_D);
   }
-  if(digitalRead(COIN) == HIGH) {
-    Keyboard.release(KEY_5);
+  if(digitalRead(D) == HIGH) {
+    Keyboard.release(KEY_D);
   }
-*/
-/*
+
   if(digitalRead(TAB) == LOW) {
     Keyboard.press(KEY_TAB);
   }
   if(digitalRead(TAB) == HIGH) {
     Keyboard.release(KEY_TAB);
   }
-*/
-/*
-  if(digitalRead(Q) == LOW) {
-    Keyboard.press(KEY_Q);
-  }
-  if(digitalRead(Q) == HIGH) {
-    Keyboard.release(KEY_Q);
-  }
-*/
-/*
-  if(digitalRead(W) == LOW) {
-    Keyboard.press(KEY_W);
-  }
-  if(digitalRead(W) == HIGH) {
-    Keyboard.release(KEY_W);
-  }
-*/
-/*
-  if(digitalRead(E) == LOW) {
-    Keyboard.press(KEY_E);
-  }
-  if(digitalRead(E) == HIGH) {
-    Keyboard.release(KEY_E);
-  }
-*/
-/*
+
   if(digitalRead(ESCAPE) == LOW) {
     Keyboard.press(KEY_ESC);
   }
   if(digitalRead(ESCAPE) == HIGH) {
     Keyboard.release(KEY_ESC);
   }
-*/
+
+  if(digitalRead(PAUSE) == LOW) {
+    Keyboard.press(KEY_P);
+  }
+  if(digitalRead(PAUSE) == HIGH) {
+    Keyboard.release(KEY_P);
+  }
 }
